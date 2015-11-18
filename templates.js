@@ -40,7 +40,7 @@ frame.set("app", t_5);
 t_1 += "<li class=\"app-list-app focusable\" data-slug=\"";
 t_1 += runtime.suppressValue(runtime.memberLookup((t_5),"slug", env.autoesc), env.autoesc);
 t_1 += "\">\n<img src=\"";
-t_1 += runtime.suppressValue(runtime.memberLookup((runtime.memberLookup((runtime.memberLookup((t_5),"previews", env.autoesc)),0, env.autoesc)),"image_url", env.autoesc), env.autoesc);
+t_1 += runtime.suppressValue(runtime.memberLookup((runtime.memberLookup((t_5),"icons", env.autoesc)),"128", env.autoesc), env.autoesc);
 t_1 += "\"\nalt=\"";
 t_1 += runtime.suppressValue(runtime.memberLookup((t_5),"name", env.autoesc), env.autoesc);
 t_1 += "\" title=\"";
@@ -95,7 +95,7 @@ output += runtime.suppressValue(runtime.memberLookup((runtime.contextOrFrameLook
 output += "</span>\n<span class=\"author\">By ";
 output += runtime.suppressValue(runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "app")),"author", env.autoesc), env.autoesc);
 output += "</span>\n<article class=\"description\">";
-output += runtime.suppressValue(runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "app")),"description", env.autoesc), env.autoesc);
+output += runtime.suppressValue(env.getFilter("safe").call(context, runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "app")),"description", env.autoesc)), env.autoesc);
 output += "</article>";
 cb(null, output);
 ;
