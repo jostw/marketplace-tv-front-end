@@ -4,7 +4,8 @@ define('routes',
 
     router.addRoutes([
         {pattern: '^/$', view_name: 'homepage'},
-        {pattern: '^/index.html$', view_name: 'homepage'}
+        {pattern: '^/index.html$', view_name: 'homepage'},
+        {pattern: '^/marketplace-tv-front-end$', view_name: 'homepage'}
     ]);
 
     router.api.addRoutes({
