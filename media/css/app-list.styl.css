@@ -3,18 +3,18 @@
  */
 .app-list {
   position: absolute;
-  top: 40%;
+  top: 300px;
+  bottom: 0;
   left: 0;
   width: 100%;
-  height: 60%;
   overflow: auto;
 }
 .app-list ul {
-  padding: 4em 2em 2em 4em;
+  padding: 4em 3em 3em 4em;
 }
 .app-list li {
   float: left;
-  margin: 0 2em 2em 0;
+  margin: 0 1em 1em 0;
   list-style: none;
 }
 .app-list-app {
@@ -40,6 +40,7 @@
 }
 .app-list-app img {
   width: 100%;
+  height: auto;
 }
 .app-list-app .name {
   position: absolute;
