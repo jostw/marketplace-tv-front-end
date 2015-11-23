@@ -17,6 +17,9 @@ ul {
   margin: 0;
   padding: 0;
 }
+.hidden {
+  display: none;
+}
 .clearfix::before,
 .clearfix::after {
   content: "";

@@ -90,7 +90,7 @@ output += "\" title=\"";
 output += runtime.suppressValue(runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "app")),"name", env.autoesc), env.autoesc);
 output += "\">\n</div>\n<h1 class=\"name\">";
 output += runtime.suppressValue(runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "app")),"name", env.autoesc), env.autoesc);
-output += "</h1>\n<span class=\"type\">";
+output += "</h1>\n<span class=\"type hidden\">";
 output += runtime.suppressValue(runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "app")),"premium_type", env.autoesc), env.autoesc);
 output += "</span>\n<span class=\"author\">By ";
 output += runtime.suppressValue(runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "app")),"author", env.autoesc), env.autoesc);

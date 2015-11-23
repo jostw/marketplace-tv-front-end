@@ -1,6 +1,8 @@
 define('views/homepage',
-    ['core/l10n', 'core/models', 'core/z', 'templates', 'spatial-navigation'],
-    function(l10n, models, z, nunjucks, SpatialNavigation) {
+    ['apps', 'core/capabilities', 'core/l10n', 'core/models', 'core/z',
+     'templates', 'spatial-navigation'],
+    function(apps, caps, l10n, models, z,
+             nunjucks, SpatialNavigation) {
     var gettext = l10n.gettext;
     var appsModel = models('apps');
 
@@ -21,21 +23,64 @@ define('views/homepage',
     });
 
     z.page.on('sn:focused focus', '.focusable', function() {
+        var $appPreview = z.page.find('.app-preview');
+        var $appPreviewType;
+
+        var focusedApp = appsModel.lookup($(this).data('slug'));
+        var focusedManifestURL = focusedApp.manifest_url;
+
         // Update app preview area with current focused app.
-        z.page.find('.app-preview').html(
+        $appPreview.html(
             nunjucks.env.render('_includes/app_preview.html', {
-                app: appsModel.lookup($(this).data('slug'))
+                app: focusedApp
             })
         );
+
+        $appPreviewType = $appPreview.find('.type');
+
+        if (!caps.webApps) {
+            $appPreviewType.removeClass('hidden');
+
+            return;
+        }
+
+        // Update type when app is already installed.
+        apps.getInstalled().done(function(installedApps) {
+            installedApps.map(function(installedManifestURL) {
+                if (installedManifestURL === focusedManifestURL) {
+                    $appPreviewType.html('installed');
+                }
+            });
+
+            $appPreviewType.removeClass('hidden');
+        });
     });
 
     z.page.on('sn:enter-down', '.focusable', function() {
-        // Preview current focused app.
-        if (navigator.mozApps) {
-            var app = appsModel.lookup($(this).data('slug'));
-
-            navigator.mozApps.install(app.manifest_url);
+        if (!caps.webApps) {
+            return;
         }
+
+        // Preview current focused app.
+        var focusedApp = appsModel.lookup($(this).data('slug'));
+        var focusedManifestURL = focusedApp.manifest_url;
+
+        apps.getInstalled().done(function(installedApps) {
+            var isInstalled = false;
+
+            // Check if app is installed.
+            installedApps.map(function(installedManifestURL) {
+                if (focusedManifestURL === installedManifestURL) {
+                    isInstalled = true;
+                }
+            });
+
+            if (isInstalled) {
+                apps.launch(focusedManifestURL);
+            } else {
+                apps.install(focusedApp);
+            }
+        });
     });
 
     return function(builder) {
