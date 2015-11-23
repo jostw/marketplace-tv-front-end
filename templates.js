@@ -39,7 +39,7 @@ var t_5 = t_4[t_2];
 frame.set("app", t_5);
 t_1 += "<li class=\"app-list-app focusable\" data-slug=\"";
 t_1 += runtime.suppressValue(runtime.memberLookup((t_5),"slug", env.autoesc), env.autoesc);
-t_1 += "\">\n<img src=\"";
+t_1 += "\"\ncontextmenu=\"test-menu\">\n<img src=\"";
 t_1 += runtime.suppressValue(runtime.memberLookup((runtime.memberLookup((t_5),"icons", env.autoesc)),"128", env.autoesc), env.autoesc);
 t_1 += "\"\nalt=\"";
 t_1 += runtime.suppressValue(runtime.memberLookup((t_5),"name", env.autoesc), env.autoesc);
@@ -65,7 +65,7 @@ cb(null, t_6);
 return t_6;
 }
 ,null,null), true && env.autoesc);
-output += "</div>";
+output += "<menu type=\"context\" id=\"test-menu\">\n<menuitem label=\"test\">\n</menu>\n</div>";
 cb(null, output);
 ;
 } catch (e) {
