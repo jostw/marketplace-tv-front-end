@@ -59,7 +59,7 @@ return t_1;
 }
 ,function(cb) {
 if(!cb) { cb = function(err) { if(err) { throw err; }}}
-var t_6 = "";t_6 += "<ul>\n<li>loading...</li>\n</ul>";
+var t_6 = "";t_6 += "<ul class=\"clearfix\">\n<li>loading...</li>\n</ul>";
 cb(null, t_6);
 ;
 return t_6;
