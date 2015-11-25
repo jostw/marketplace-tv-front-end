@@ -83,6 +83,14 @@ define('views/homepage',
         });
     });
 
+    z.page.on('contextmenu', '.focusable', function() {
+        var focusedApp = appsModel.lookup($(this).data('slug'));
+
+        // Change hash with manifest url to inform system which app is focused.
+        // e.g. /#manifest=http://example.com/manifest.webapp
+        location.hash = 'manifest=' + encodeURIComponent(focusedApp.manifest_url);
+    });
+
     return function(builder) {
         builder.start('homepage.html');
 

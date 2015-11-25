@@ -17,7 +17,7 @@
   margin: 0 1em 1em 0;
   list-style: none;
 }
-.app-list-app .focusable {
+.app-list-app {
   position: relative;
   width: 150px;
   height: 150px;
@@ -31,7 +31,7 @@
   -webkit-transition: border-width 0.5s, -webkit-transform 0.5s;
           transition: border-width 0.5s, transform 0.5s;
 }
-.app-list-app .focusable:focus {
+.app-list-app:focus {
   z-index: 1;
   border: 8px solid #fff;
   -webkit-transform: scale(1.5);
