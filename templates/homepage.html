@@ -2,12 +2,20 @@
 
 <div class="app-list">
   {% defer (url=api('apps'), pluck='objects', as='apps', key='slug') %}
-    <ul class="clearfix" contextmenu="contextmenu">
+    <ul class="clearfix">
       {% for app in this %}
-        <li class="app-list-app focusable" data-slug="{{ app.slug }}">
-          <img src="{{ app.icons['128'] }}"
-               alt="{{ app.name }}" title="{{ app.name }}">
-          <span class="name">{{ app.name }}</span>
+        <li class="app-list-app" contextmenu="contextmenu-{{ loop.index }}">
+          <div class="focusable" data-slug="{{ app.slug }}">
+            <img src="{{ app.icons['128'] }}"
+                 alt="{{ app.name }}" title="{{ app.name }}">
+            <span class="name">{{ app.name }}</span>
+          </div>
+
+          <menu type="context" id="contextmenu-{{ loop.index }}">
+            <menuitem label="Cancel"></menuitem>
+            <menuitem label="Add {{ loop.index }}"></menuitem>
+          </menu>
+
         </li>
       {% endfor %}
     </ul>
@@ -17,8 +25,3 @@
     </ul>
   {% end %}
 </div>
-
-<menu type="context" id="contextmenu">
-  <menuitem label="Cancel"></menuitem>
-  <menuitem label="Add"></menuitem>
-</menu>
