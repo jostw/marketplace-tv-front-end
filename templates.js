@@ -31,17 +31,14 @@ try {
 output += "<div class=\"app-preview\"></div>\n<div class=\"app-list\">";
 output += runtime.suppressValue(env.getExtension("defer")["run"](context,runtime.makeKeywordArgs({"url": runtime.contextOrFrameLookup(context, frame, "api")("apps"),"pluck": "objects","as": "apps","key": "slug"}),function(cb) {
 if(!cb) { cb = function(err) { if(err) { throw err; }}}
-var t_1 = "";t_1 += "<ul class=\"clearfix\">";
+var t_1 = "";t_1 += "<ul class=\"clearfix\" contextmenu=\"contextmenu\">";
 frame = frame.push();
 var t_4 = runtime.contextOrFrameLookup(context, frame, "this");
 if(t_4) {for(var t_2=0; t_2 < t_4.length; t_2++) {
 var t_5 = t_4[t_2];
 frame.set("app", t_5);
-frame.set("loop.index", t_2 + 1);
 t_1 += "<li class=\"app-list-app focusable\" data-slug=\"";
 t_1 += runtime.suppressValue(runtime.memberLookup((t_5),"slug", env.autoesc), env.autoesc);
-t_1 += "\"\ncontextmenu=\"contextmenu-";
-t_1 += runtime.suppressValue(runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "loop")),"index", env.autoesc), env.autoesc);
 t_1 += "\">\n<img src=\"";
 t_1 += runtime.suppressValue(runtime.memberLookup((runtime.memberLookup((t_5),"icons", env.autoesc)),"128", env.autoesc), env.autoesc);
 t_1 += "\"\nalt=\"";
@@ -50,9 +47,7 @@ t_1 += "\" title=\"";
 t_1 += runtime.suppressValue(runtime.memberLookup((t_5),"name", env.autoesc), env.autoesc);
 t_1 += "\">\n<span class=\"name\">";
 t_1 += runtime.suppressValue(runtime.memberLookup((t_5),"name", env.autoesc), env.autoesc);
-t_1 += "</span>\n<menu type=\"context\" id=\"contextmenu-";
-t_1 += runtime.suppressValue(runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "loop")),"index", env.autoesc), env.autoesc);
-t_1 += "\">\n<menuitem label=\"Cancel\"></menuitem>\n<menuitem label=\"Add\"></menuitem>\n</menu>\n</li>";
+t_1 += "</span>\n</li>";
 ;
 }
 }
@@ -70,7 +65,7 @@ cb(null, t_6);
 return t_6;
 }
 ,null,null), true && env.autoesc);
-output += "</div>";
+output += "</div>\n<menu type=\"context\" id=\"contextmenu\">\n<menuitem label=\"Cancel\"></menuitem>\n<menuitem label=\"Add\"></menuitem>\n</menu>";
 cb(null, output);
 ;
 } catch (e) {
