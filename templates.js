@@ -52,7 +52,7 @@ t_1 += "\">\n<span class=\"name\">";
 t_1 += runtime.suppressValue(runtime.memberLookup((t_5),"name", env.autoesc), env.autoesc);
 t_1 += "</span>\n<menu type=\"context\" id=\"test-menu-";
 t_1 += runtime.suppressValue(runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "loop")),"index", env.autoesc), env.autoesc);
-t_1 += "\">\n<menuitem label=\"test1\" id=\"test1\">\n<menuitem label=\"test2\" id=\"test2\">\n</menu>\n</li>";
+t_1 += "\">\n<menuitem label=\"test1\" id=\"test1\"></menuitem>\n<menuitem label=\"test2\" id=\"test2\"></menuitem>\n</menu>\n</li>";
 ;
 }
 }
