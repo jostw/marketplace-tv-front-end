@@ -48,3 +48,4 @@ tests/captures/*
 
 package/builds/*
 package/.tmp/*
+package/iframe/bundle.js

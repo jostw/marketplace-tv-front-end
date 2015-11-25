@@ -22,8 +22,10 @@
     "rimraf": "^2.4.3"
   },
   "devDependencies": {
+    "browserify": "^12.0.1",
     "casperjs": "^1.1.0-beta3",
     "chai": "^2.1.2",
+    "envify": "^3.4.0",
     "karma": "^0.12.31",
     "karma-chai": "^0.1.0",
     "karma-firefox-launcher": "^0.1.4",
@@ -33,8 +35,10 @@
     "karma-sinon": "^1.0.4",
     "mocha": "^2.2.1",
     "phantomjs": "^1.9.16",
+    "proxyquire": "^1.7.3",
     "sinon": "^1.14.1",
     "slimerjs": "^0.9.5",
-    "underscore": "^1.8.2"
+    "underscore": "^1.8.2",
+    "vinyl-source-stream": "^1.1.0"
   }
 }

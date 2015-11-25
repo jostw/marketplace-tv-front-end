@@ -15,10 +15,13 @@ var fs = require('fs');
 var path = require('path');
 
 var archiver = require('archiver');
+var browserify = require('browserify');
 var commonplace = require('commonplace');
+var envify = require('envify/custom');
 var rename = require('gulp-rename');
 var replace = require('gulp-replace');
 var rm = require('rimraf');
+var vinylSource = require('vinyl-source-stream');
 
 
 var packageFilesWhitelist = [
@@ -46,6 +49,19 @@ var latestPackageZip = PKG_PATH + '_' + server + '.zip';
 var versionTimestamp = getVersionTimestamp();
 var packageFilename = server + '_' + versionTimestamp;
 var versionPackageZip = PKG_PATH + packageFilename + '.zip';
+
+var iframePackageFilesWhitelist = [
+    // Locale files will be dynamically whitelisted later.
+    'package/iframe/app-icons/*.png',
+    'package/iframe/bundle.js',
+    'package/iframe/index.html',
+    'package/iframe/style.css',
+];
+var IFRAME_SRC_PATH = path.join('package', 'iframe');
+var iframeLatestPackageFolder = PKG_PATH + '_iframe_' + server + '/';
+var iframeLatestPackageZip = PKG_PATH + '_iframe_' + server + '.zip';
+var iframePackageFilename = 'iframe_' + server + '_' + versionTimestamp;
+var iframeVersionPackageZip = PKG_PATH + iframePackageFilename + '.zip';
 
 
 gulp.task('package',
@@ -198,3 +214,60 @@ function zipPackage(dirToZip, outputZipName) {
     ]);
     archive.finalize();
 }
+
+
+gulp.task('iframe_package', ['iframe_package_js', 'iframe_package_manifest',
+                             'iframe_whitelist_copy'], function() {
+    [iframeLatestPackageZip, iframeVersionPackageZip].forEach(function(outputZipName) {
+        zipPackage(iframeLatestPackageFolder, outputZipName);
+    });
+    console.log('Package complete: ./package/builds/' +
+                iframePackageFilename + '.zip');
+});
+
+
+gulp.task('iframe_whitelist_copy', ['iframe_package_clean',
+                                    'iframe_package_js'], function() {
+    // Copy files from whitelist to the folder.
+    return gulp.src(iframePackageFilesWhitelist)
+        .pipe(gulp.dest(function(file) {
+            // Maintain directory structure for each file.
+            var filePath = file.path.split(__dirname)[1].slice(1).split('/');
+            // Remove 'package/iframe' from path and filename.
+            filePath.shift();
+            filePath.shift();
+            filePath.pop();
+            // Copy it to the package.
+            return iframeLatestPackageFolder + filePath.join('/');
+        }));
+});
+
+
+gulp.task('iframe_package_js', function() {
+    return browserify('./package/iframe/js/main.js')
+        .transform(envify({
+            MKT_URL: process.env.URL
+        }))
+        .bundle()
+        .pipe(vinylSource('bundle.js'))
+        .pipe(gulp.dest('./package/iframe'));
+});
+
+
+gulp.task('iframe_package_manifest', ['iframe_package_clean'], function() {
+    // Build iframe package manifest. Swap in the name, origin, version.
+    var name = config.packageConfig[server].name;
+
+    return gulp.src(path.join(IFRAME_SRC_PATH, 'manifest.webapp'))
+        .pipe(replace(/{name}/, name))
+        .pipe(replace(/{origin}/, config.packageConfig[server].origin))
+        .pipe(replace(/{version}/, versionTimestamp))
+        .pipe(gulp.dest(iframeLatestPackageFolder));
+});
+
+
+gulp.task('iframe_package_clean', function(cb) {
+    // Delete latest iframe package folder + zip to replace with newer ones.
+    rm(iframeLatestPackageZip, function() {});
+    rm(iframeLatestPackageFolder, cb);
+});
