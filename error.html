@@ -3,6 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <title>404 Not Found</title>
+
+  <script>
+    (function(navigator) {
+      if (navigator.onLine) {
+        location.href = "index.html";
+      }
+    })(window.navigator);
+  </script>
 </head>
 <body>
   <p>Error.</p>
