@@ -12,8 +12,9 @@
         "128": "app-icons/128.png"
     },
     "launch_path": "index.html",
+    "appcache_path": "app.appcache",
     "name": "Stage",
     "origin": "app://marketplace.allizom.org",
     "type": "web",
-    "version": "20151127.14148"
+    "version": "20151127.145311"
 }
