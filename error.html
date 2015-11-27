@@ -3,16 +3,45 @@
 <head>
   <meta charset="UTF-8">
   <title>404 Not Found</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
 
-  <script>
-    (function(navigator) {
-      if (navigator.onLine) {
-        location.href = "index.html";
-      }
-    })(window.navigator);
-  </script>
+    html,
+    body {
+      height: 100%;
+    }
+
+    body {
+      margin: 0;
+      padding-bottom: 41rem;
+    }
+
+    .title,
+    .info {
+      font-family: "Fira Sans Light";
+      font-style: italic;
+      color: #4D4D4D;
+    }
+
+    .title {
+      margin: 0 0 16rem;
+      font-size: 46px;
+    }
+
+    .info {
+      font-size: 28px;
+    }
+
+    .button {
+
+    }
+  </style>
 </head>
 <body>
-  <p>Error.</p>
+  <h1 class="title">Marketplace</h1>
+  <article class="info">You are offline right now, please connect to internet.</article>
+  <a href="#" class="button" title="Exit">Exit</a>
 </body>
 </html>
