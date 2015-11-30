@@ -3,3 +3,6 @@ error.html
 
 NETWORK:
 *
+
+FALLBACK:
+/ /error.html
