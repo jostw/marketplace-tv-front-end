@@ -2,26 +2,43 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>404 Not Found</title>
+  <title>Marketplace</title>
   <style>
+    @font-face {
+        src: local('FiraSansOTLight'),
+             local('FiraSansLight'),
+             local('Fira Sans OT Light'),
+             local('Fira Sans Light'),
+             url('media/fonts/FiraSans/firasansot-light-webfont.woff') format('woff'),
+             url('media/fonts/FiraSans/firasansot-light-webfont.ttf') format('truetype'),
+             url('media/fonts/FiraSans/firasansot-light-webfont.svg#fira_sans_otlight') format('svg');
+        font-family: FiraSansWeb;
+        font-weight: 300;
+    }
+
     * {
       box-sizing: border-box;
     }
 
     html,
-    body {
+    body,
+    button {
       height: 100%;
+
+      font-family: "Fira Sans OT", "Fira Sans", FiraSansWeb, sans-serif;
+      font-style: italic;
+      font-size: 10px;
     }
 
     body {
       margin: 0;
-      padding-bottom: 41rem;
+      padding: 6rem 0 0 36rem;
+
+      background-color: #CCC;
     }
 
     .title,
     .info {
-      font-family: "Fira Sans Light";
-      font-style: italic;
       color: #4D4D4D;
     }
 
@@ -31,17 +48,62 @@
     }
 
     .info {
+      margin-left: 4.5rem;
       font-size: 28px;
     }
 
     .button {
+      position: absolute;
+      right: 40.5rem;
+      bottom: 41rem;
 
+      width: 23.7rem;
+      height: 7rem;
+      border: 0;
+      border-radius: 5.5rem;
+      padding: 2rem 4.4rem;
+      opacity: .7;
+
+      font-size: 2.8rem;
+
+      color: #FFF;
+      background-color: #000;
+
+      transition-property: transform,
+                           color,
+                           background-color;
+
+      transition-timing-function: cubic-bezier(0.25, 0, 0, 1.0);
+      transition-duration: 0.42s;
+    }
+
+    .button:focus {
+      color: #2D2D2D;
+      background-color: #FFF;
+
+      transform: scale(1.2);
+    }
+
+    .button::-moz-focus-inner {
+      border: 0;
     }
   </style>
 </head>
 <body>
   <h1 class="title">Marketplace</h1>
   <article class="info">You are offline right now, please connect to internet.</article>
-  <a href="#" class="button" title="Exit">Exit</a>
+  <button class="button" id="close-button">Exit</button>
+
+  <script>
+    (function(window) {
+      var $closeButton = document.getElementById('close-button')
+
+      $closeButton.addEventListener('click', function() {
+          window.close();
+      });
+
+      $closeButton.focus();
+    })(window);
+  </script>
 </body>
 </html>
