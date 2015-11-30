@@ -7,3 +7,6 @@ media/fonts/FiraSans/firasansot-light-webfont.woff
 
 NETWORK:
 *
+
+FALLBACK:
+/ error.html

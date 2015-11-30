@@ -11,10 +11,10 @@
         "120": "app-icons/120.png",
         "128": "app-icons/128.png"
     },
-    "launch_path": "index.html",
+    "launch_path": "error.html",
     "appcache_path": "manifest.appcache",
     "name": "Stage",
     "origin": "app://marketplace.allizom.org",
     "type": "web",
-    "version": "20151130.162333"
+    "version": "20151130.17576"
 }
