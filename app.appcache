@@ -1,6 +1,9 @@
 CACHE MANIFEST
 error.html
-media/fonts/FiraSans/firasansot-light-webfont.*
+media/fonts/FiraSans/firasansot-light-webfont.eot
+media/fonts/FiraSans/firasansot-light-webfont.svg
+media/fonts/FiraSans/firasansot-light-webfont.ttf
+media/fonts/FiraSans/firasansot-light-webfont.woff
 
 NETWORK:
 *
