@@ -1,8 +1,9 @@
 CACHE MANIFEST
 error.html
+media/fonts/FiraSans/firasansot-light-webfont.*
 
 NETWORK:
 *
 
 FALLBACK:
-* /error.html
+* error.html
