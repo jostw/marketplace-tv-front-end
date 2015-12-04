@@ -101,15 +101,13 @@
 
   <script>
     (function(window) {
-      var $closeButton = document.getElementById('close-button')
+      var $closeButton = document.getElementById('close-button');
 
       $closeButton.addEventListener('click', function() {
-          window.close();
+        window.close();
       });
 
-      setTimeout(function() {
-          $closeButton.focus();
-      });
+      $closeButton.focus();
     })(window);
   </script>
 </body>
