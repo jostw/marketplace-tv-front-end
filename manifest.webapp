@@ -6,12 +6,12 @@
         "url": "http://mozilla.org"
     },
     "icons": {
-        "128": "app-icons/appic_web_apps.png"
+        "336": "app-icons/appic_web_apps.png"
     },
     "launch_path": "index.html",
     "appcache_path": "manifest.appcache",
     "name": "Stage",
     "origin": "app://marketplace.allizom.org",
     "type": "web",
-    "version": "20151204.154728"
+    "version": "20151209.143335"
 }
