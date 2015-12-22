@@ -11,10 +11,10 @@
   <h1 class="name">{{ app.name }}</h1>
   <div class="provider">
     {% if app.author %}
-      <span>by</span>
+      <span>{{ _('by') }}</span>
       <span>{{ app.author }}</span>
     {% endif %}
   </div>
-  <span class="price hidden">{{ app.premium_type }}</span>
+  <span class="price hidden">{{ _('Free') }}</span>
   <article class="description">{{ app.description | safe }}</article>
 </div>
