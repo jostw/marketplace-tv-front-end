@@ -32,6 +32,8 @@ body {
     left: 0;
     z-index: 999;
 
+    width: 100%;
+    height: 100%;
     overflow: hidden;
 
     transition: opacity .1s;
@@ -116,14 +118,16 @@ body {
     height: auto;
 }
 
+.smart-button::-moz-focus-inner {
+    border: 0;
+}
+
 .smart-button[type=rounded-corner-text] {
     width: 30.4rem;
     margin: 0 1.5rem;
 
     font-family: "Fira Sans OT", "Fira Sans", FiraSansWeb, sans-serif;
     font-size: 4.5rem;
-}
 
-.smart-button::-moz-focus-inner {
-    border: 0;
+    background-image: none;
 }
