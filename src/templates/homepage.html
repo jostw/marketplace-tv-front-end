@@ -23,7 +23,7 @@
             <span class="name">{{ app.name }}</span>
           </div>
 
-          {% if app.tv_featured %}
+          {% if app.tv_featured or loop.index < 8 %}
             <span class="star" data-icon="bookmark-on"></span>
           {% endif %}
         </li>

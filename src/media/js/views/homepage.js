@@ -99,6 +99,9 @@ define('views/homepage',
 
         this.classList.add('focused');
 
+        // Mocking feature apps for CES demo.
+        focusedApp.tv_featured = $(this).index() < 7;
+
         // Update app preview area with current focused app.
         $appPreview.html(
             nunjucks.env.render('_includes/app_preview.html', {
