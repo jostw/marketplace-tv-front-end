@@ -1,33 +1,31 @@
 <div class="app-preview"></div>
 
 <div class="app-list">
-  {% defer (url=api('apps'), pluck='objects', as='apps', key='slug') %}
-    <ul class="clearfix">
-      {% for app in this %}
-        <li class="app-list-app focusable" data-slug="{{ app.slug }}">
-          <div class="icon">
-            {% if app.icons['128'] %}
-              <img src="{{ app.icons['128'] }}"
-                   alt="{{ app.name }}" title="{{ app.name }}">
-            {% elif app.icons['64'] %}
-              <img src="{{ app.icons['64'] }}"
-                   alt="{{ app.name }}" title="{{ app.name }}">
-            {% elif app.icons['48'] %}
-              <img src="{{ app.icons['48'] }}"
-                   alt="{{ app.name }}" title="{{ app.name }}">
-            {% elif app.icons['32'] %}
-              <img src="{{ app.icons['32'] }}"
-                   alt="{{ app.name }}" title="{{ app.name }}">
-            {% endif %}
-
-            <span class="name">{{ app.name }}</span>
-          </div>
-
-          {% if app.tv_featured or loop.index < 8 %}
-            <span class="star" data-icon="bookmark-on"></span>
+  <ul class="clearfix">
+    {% for name, app in apps %}
+      <li class="app-list-app focusable" data-slug="{{ app.name }}">
+        <div class="icon">
+          {% if app.icons['128'] %}
+            <img src="{{ app.icons['128'] }}"
+                 alt="{{ app.name }}" title="{{ app.name }}">
+          {% elif app.icons['64'] %}
+            <img src="{{ app.icons['64'] }}"
+                 alt="{{ app.name }}" title="{{ app.name }}">
+          {% elif app.icons['48'] %}
+            <img src="{{ app.icons['48'] }}"
+                 alt="{{ app.name }}" title="{{ app.name }}">
+          {% elif app.icons['32'] %}
+            <img src="{{ app.icons['32'] }}"
+                 alt="{{ app.name }}" title="{{ app.name }}">
           {% endif %}
-        </li>
-      {% endfor %}
-    </ul>
-  {% end %}
+
+          <span class="name">{{ app.name }}</span>
+        </div>
+
+        {% if app.tv_featured or loop.index < 8 %}
+          <span class="star" data-icon="bookmark-on"></span>
+        {% endif %}
+      </li>
+    {% endfor %}
+  </ul>
 </div>

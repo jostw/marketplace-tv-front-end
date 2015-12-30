@@ -1,10 +1,12 @@
 define('views/homepage',
     ['apps', 'core/capabilities', 'core/l10n', 'core/models', 'core/z',
-     'templates', 'spatial-navigation'],
+     'templates', 'spatial-navigation', 'mock'],
     function(apps, caps, l10n, models, z,
-             nunjucks, SpatialNavigation) {
+             nunjucks, SpatialNavigation, mock) {
     var gettext = l10n.gettext;
-    var appsModel = models('apps');
+
+    // Mocking apps for CES demo.
+    var appsModel = mock;
 
     var appContextMenu = document.getElementById('contextmenu').children[0];
 
@@ -190,7 +192,9 @@ define('views/homepage',
     });
 
     return function(builder) {
-        builder.start('homepage.html');
+        builder.start('homepage.html', {
+            apps: appsModel.apps
+        });
 
         builder.z('type', 'root');
         builder.z('title', gettext('Homepage'));
