@@ -19,6 +19,10 @@ define('views/homepage',
             return parseInt(prev, 10) < parseInt(current, 10) ? current : prev;
         });
 
+        if (location.protocol.match('app')) {
+            return location.protocol + '//' + location.hostname + '/' + icons[maxIconSize];
+        }
+
         return icons[maxIconSize];
     }
 
