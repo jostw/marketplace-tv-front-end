@@ -10,13 +10,14 @@
     <title>Firefox Marketplace App</title>
 
     
+      <link rel="stylesheet" href="media/css/splash.css">
       <link rel="stylesheet" href="media/css/include.css">
     
 
     <script>
       (function(navigator) {
         if (!navigator.onLine) {
-          location.href = 'offline/index.html';
+          location.href = 'offline.html';
         }
 
         if (!localStorage.getItem('marketplace.tutorial.fteskip')) {
@@ -26,7 +27,7 @@
     </script>
   </head>
 
-  <body class="home" data-media="media/" contextmenu="contextmenu">
+  <body class="home" data-media="" contextmenu="contextmenu">
     <noscript><p>Sorry, you need JavaScript to use this site.</p></noscript>
 
     <main>
@@ -34,7 +35,8 @@
     </main>
 
     <menu type="context" id="contextmenu">
-      <menuitem></menuitem>
+      <menuitem icon="media/img/install.png"
+                label="Add to apps"></menuitem>
     </menu>
 
     
