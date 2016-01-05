@@ -1,10 +1,10 @@
 define('views/homepage',
     ['apps', 'core/l10n', 'core/models', 'core/z',
      'key_helper', 'image_helper', 'smart_button', 'spatial_navigation',
-     'views/app_preview', 'views/app_context_menu'],
+     'views/app_preview', 'views/app_context_menu', 'mock'],
     function(apps, l10n, models, z,
              keyHelper, imageHelper, smartButton, SpatialNavigation,
-             appPreview, appContextMenu) {
+             appPreview, appContextMenu, mock) {
     var gettext = l10n.gettext;
     var appsModel = models('apps');
 
@@ -94,7 +94,8 @@ define('views/homepage',
     });
 
     z.page.on('focus', '.app-button', function(e) {
-        var focusedApp = appsModel.lookup(this.dataset.id);
+        var focusedApp = appsModel.lookup(this.dataset.id) ||
+                         mock.lookup(this.dataset.id);
 
         // Clear the hash '#preview' when previewing apps.
         location.hash = '';
@@ -112,7 +113,8 @@ define('views/homepage',
         }
 
         // Preview current focused app.
-        var focusedApp = appsModel.lookup(this.dataset.id);
+        var focusedApp = appsModel.lookup(this.dataset.id) ||
+                         mock.lookup(this.dataset.id);
 
         if (focusedApp.doc_type === 'webapp') {
             var focusedManifestURL = focusedApp.manifest_url;
@@ -144,7 +146,9 @@ define('views/homepage',
              return;
         }
 
-        builder.start('homepage.html');
+        builder.start('homepage.html', {
+            mock_apps: mock.apps
+        });
 
         builder.z('type', 'root');
         builder.z('title', gettext('Homepage'));

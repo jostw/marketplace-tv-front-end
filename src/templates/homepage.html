@@ -19,6 +19,19 @@
           <span class="name">{{ app.name }}</span>
         </li>
       {% endfor %}
+
+      {% for name, app in mock_apps %}
+        <li class="smart-button app-button focusable" data-id="{{ app.name }}">
+          <div class="app-list-app">
+            <div class="icon" style="background-image: url('{{ app.icons['128'] }}');"></div>
+
+            {% if app.tv_featured %}
+              <span class="star" data-icon="bookmark-on"></span>
+            {% endif %}
+          </div>
+          <span class="name">{{ app.name }}</span>
+        </li>
+      {% endfor %}
     </ul>
   {% end %}
 </div>
