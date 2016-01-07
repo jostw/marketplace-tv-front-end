@@ -8,10 +8,10 @@
     "icons": {
         "336": "app-icons/appic_web_apps.png"
     },
-    "launch_path": "index.html",
+    "launch_path": "/marketplace-tv-front-end/index.html",
     "appcache_path": "manifest.appcache",
     "name": "Stage",
     "origin": "app://marketplace.allizom.org",
     "type": "web",
-    "version": "20160107.17637"
+    "version": "20160107.175438"
 }
