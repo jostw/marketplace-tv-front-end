@@ -12,7 +12,7 @@
               <div class="icon" style="background-image: url('{{ app.icons['128'] }}');"></div>
             {% endif %}
 
-            {% if app.tv_featured %}
+            {% if app.tv_featured or loop.index < 8 %}
               <span class="star" data-icon="bookmark-on"></span>
             {% endif %}
           </div>
