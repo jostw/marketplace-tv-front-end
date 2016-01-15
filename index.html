@@ -2,25 +2,21 @@
 <!--Read marketplace-frontend.readthedocs.org for more information.-->
 
 <!DOCTYPE html>
-<html manifest="http://jostw.github.io/marketplace-tv-front-end/manifest.appcache">
+<html manifest="manifest.appcache">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, user-scalable=no,
                                    initial-scale=1, maximum-scale=1">
     <title>Firefox Web Apps</title>
 
-
+    
       <link rel="stylesheet" href="media/css/include.css">
-
+    
 
     <script>
       (function(navigator) {
         if (!navigator.onLine) {
           location.href = 'offline/index.html';
-        }
-
-        if (!localStorage.getItem('marketplace.tutorial.fteskip')) {
-          location.href = 'tutorial/index.html';
         }
       })(window.navigator);
     </script>
@@ -37,8 +33,8 @@
       <menuitem></menuitem>
     </menu>
 
-
+    
       <script src="media/js/include.js" defer></script>
-
+    
   </body>
 </html>

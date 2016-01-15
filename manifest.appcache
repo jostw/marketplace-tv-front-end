@@ -1,6 +1,6 @@
 CACHE MANIFEST
-https://marketplace-dev.allizom.org/tv/index.html
-offline/index.html?b=123
+index.html
+offline/index.html
 offline/css/index.css
 offline/js/l10n.js
 offline/js/index.js
