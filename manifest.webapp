@@ -10,8 +10,8 @@
     },
     "launch_path": "index.html",
     "appcache_path": "manifest.appcache",
-    "name": "Stage",
-    "origin": "app://marketplace.allizom.org",
+    "name": "Dev",
+    "origin": "app://marketplace-dev.allizom.org",
     "type": "web",
-    "version": "20160115.151039"
+    "version": "20160115.151330"
 }
