@@ -9,9 +9,8 @@
         "336": "app-icons/appic_web_apps.png"
     },
     "launch_path": "index.html",
-    "appcache_path": "manifest.appcache",
     "name": "Dev",
     "origin": "app://marketplace-dev.allizom.org",
     "type": "web",
-    "version": "20160115.164713"
+    "version": "20160118.185435"
 }
