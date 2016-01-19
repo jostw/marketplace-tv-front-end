@@ -9,7 +9,7 @@
         "336": "media/img/app-icons/appic_web_apps.png"
     },
     "launch_path": "index.html",
-    "name": "{name}",
+    "name": "Web Apps",
     "origin": "{origin}",
     "type": "web",
     "version": "{version}"
