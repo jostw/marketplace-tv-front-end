@@ -2,7 +2,7 @@
 <!--Read marketplace-frontend.readthedocs.org for more information.-->
 
 <!DOCTYPE html>
-<html>
+<html manifest="manifest.appcache">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, user-scalable=no,
@@ -12,6 +12,14 @@
     
       <link rel="stylesheet" href="media/css/include.css">
     
+
+    <script>
+      (function(navigator) {
+        if (!navigator.onLine) {
+          location.href = 'offline/index.html';
+        }
+      })(window.navigator);
+    </script>
   </head>
 
   <body class="home" data-media="media/" contextmenu="contextmenu">
@@ -20,10 +28,6 @@
     <main>
       <div id="page" class="page" role="main"></div>
     </main>
-
-    <menu type="context" id="contextmenu">
-      <menuitem></menuitem>
-    </menu>
 
     
       <script src="media/js/include.js" defer></script>
