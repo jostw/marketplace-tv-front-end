@@ -6,11 +6,11 @@
         "url": "http://mozilla.org"
     },
     "icons": {
-        "336": "app-icons/appic_web_apps.png"
+        "336": "media/img/app-icons/appic_web_apps.png"
     },
     "launch_path": "index.html",
     "name": "Web Apps",
     "origin": "app://marketplace-dev.allizom.org",
     "type": "web",
-    "version": "20160120.15101"
+    "version": "20160121.151217"
 }
