@@ -1,8 +1,8 @@
 define('views/homepage',
-    ['apps', 'core/l10n', 'core/models', 'core/z',
+    ['apps', 'core/l10n', 'core/models', 'core/urls', 'core/z',
      'key_helper', 'image_helper', 'smart_button', 'spatial_navigation',
      'views/app_preview', 'views/app_context_menu'],
-    function(apps, l10n, models, z,
+    function(apps, l10n, models, urls, z,
              keyHelper, imageHelper, smartButton, SpatialNavigation,
              appPreview, appContextMenu) {
     var gettext = l10n.gettext;
@@ -130,14 +130,24 @@ define('views/homepage',
         }
     });
 
-    return function(builder) {
+    return function(builder, args) {
         if (!localStorage.getItem('marketplace.tutorial.fteskip')) {
              z.page.trigger('navigate', '/tv/tutorial/');
 
              return;
         }
 
-        builder.start('homepage.html');
+        var endpoint = (function() {
+            if (args.length > 0) {
+                return urls.api.url('apps', [], {
+                    cat: decodeURIComponent(args[0])
+                });
+            } else {
+                return urls.api.url('apps');
+            }
+        })();
+
+        builder.start('homepage.html', { endpoint: endpoint });
 
         builder.z('type', 'root');
         builder.z('title', gettext('Homepage'));

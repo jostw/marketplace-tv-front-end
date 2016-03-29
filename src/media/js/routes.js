@@ -8,11 +8,17 @@ define('routes',
         {pattern: '^/tv/tutorial/?$', view_name: 'tutorial'},
         {pattern: '^/tv/privacy/?$', view_name: 'privacy'},
         {pattern: '^/tv/offline/?$', view_name: 'offline'},
+        {pattern: '^/tv/category/([^/<>"\']+)$', 'view_name': 'homepage'},
         {pattern: '^/tv/?$', view_name: 'homepage'}
     ]);
 
+    if (location.origin.match(/github/)) {
+        router.addRoutes([
+            {pattern: '^/marketplace-tv-front-end/?$', view_name: 'homepage'}
+        ]);
+    }
+
     router.api.addRoutes({
-        // TODO: Update API url after backend is ready.
         'apps': '/api/v2/tv/multi-search/',
     });
 
